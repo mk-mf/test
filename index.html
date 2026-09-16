@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="Pythonプログラミング実習②の考査対策用単語帳・クイズアプリ"
+  >
+
+  <meta name="theme-color" content="#695cff">
+
+  <title>PyStudy Cards｜Python考査対策</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+
+<body>
+  <div class="background-effects" aria-hidden="true">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="grid-light"></div>
+  </div>
+
+  <div class="app-shell">
+    <header class="top-header">
+      <button
+        id="homeButton"
+        class="brand-button"
+        type="button"
+        aria-label="ホームへ戻る"
+      >
+        <span class="brand-icon">Py</span>
+
+        <span class="brand-text">
+          <strong>PyStudy</strong>
+          <small>考査対策カード</small>
+        </span>
+      </button>
+
+      <div class="header-actions">
+        <button
+          id="themeButton"
+          class="icon-button"
+          type="button"
+          aria-label="表示テーマを変更"
+          title="表示テーマを変更"
+        >
+          <span id="themeIcon">☾</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ホーム画面 -->
+      <section id="homeView" class="view">
+        <section class="hero-card">
+          <div class="hero-copy">
+            <span class="eyebrow">PYTHON PROGRAMMING ②</span>
+
+            <h1>
+              試験範囲を、<br>
+              <span>1問ずつ確実に。</span>
+            </h1>
+
+            <p>
+              授業中の板書と考査範囲をもとにした、
+              スマートフォン向けの単語帳・テストアプリです。
+            </p>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="python-logo">
+              <span>&lt;/&gt;</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="学習状況">
+          <article class="stat-card">
+            <span class="stat-label">総回答数</span>
+            <strong id="totalAnsweredStat">0</strong>
+            <small>answers</small>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-label">正答率</span>
+            <strong id="accuracyStat">0%</strong>
+            <small>accuracy</small>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-label">連続正解</span>
+            <strong id="streakStat">0</strong>
+            <small>streak</small>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-label">苦手問題</span>
+            <strong id="weakStat">0</strong>
+            <small>review</small>
+          </article>
+        </section>
+
+        <section class="panel setup-panel">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">SESSION SETUP</span>
+              <h2>学習内容を選ぶ</h2>
+            </div>
+
+            <span id="availableCount" class="count-badge">0問</span>
+          </div>
+
+          <div class="setting-group">
+            <span class="setting-label">出題モード</span>
+
+            <div class="mode-grid">
+              <label class="mode-card">
+                <input
+                  type="radio"
+                  name="quizMode"
+                  value="normal"
+                  checked
+                >
+                <span class="mode-card-body">
+                  <span class="mode-icon">▤</span>
+                  <strong>通常</strong>
+                  <small>登録順に学習</small>
+                </span>
+              </label>
+
+              <label class="mode-card">
+                <input
+                  type="radio"
+                  name="quizMode"
+                  value="random"
+                >
+                <span class="mode-card-body">
+                  <span class="mode-icon">⤨</span>
+                  <strong>ランダム</strong>
+                  <small>順番をシャッフル</small>
+                </span>
+              </label>
+
+              <label class="mode-card">
+                <input
+                  type="radio"
+                  name="quizMode"
+                  value="weak"
+                >
+                <span class="mode-card-body">
+                  <span class="mode-icon">↻</span>
+                  <strong>苦手復習</strong>
+                  <small>間違いが多い問題</small>
+                </span>
+              </label>
+
+              <label class="mode-card">
+                <input
+                  type="radio"
+                  name="quizMode"
+                  value="favorite"
+                >
+                <span class="mode-card-body">
+                  <span class="mode-icon">★</span>
+                  <strong>お気に入り</strong>
+                  <small>保存した問題だけ</small>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-group">
+            <div class="setting-row">
+              <span class="setting-label">出題分野</span>
+              <button
+                id="selectAllCategoriesButton"
+                class="text-button"
+                type="button"
+              >
+                すべて選択
+              </button>
+            </div>
+
+            <div
+              id="categoryFilters"
+              class="category-filters"
+              aria-label="出題分野"
+            ></div>
+          </div>
+
+          <div class="setting-two-columns">
+            <label class="field">
+              <span>難易度</span>
+              <select id="difficultySelect">
+                <option value="all">すべて</option>
+                <option value="basic">基礎</option>
+                <option value="standard">標準</option>
+                <option value="advanced">応用</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>問題数</span>
+              <select id="questionCountSelect">
+                <option value="10">10問</option>
+                <option value="20">20問</option>
+                <option value="30">30問</option>
+                <option value="all">全問</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="startButton" class="primary-button" type="button">
+            <span>学習を始める</span>
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <p id="setupMessage" class="setup-message" aria-live="polite"></p>
+        </section>
+
+        <section class="panel quick-review-panel">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">QUICK REVIEW</span>
+              <h2>重点ポイント</h2>
+            </div>
+          </div>
+
+          <div class="review-topics">
+            <article>
+              <span>01</span>
+              <div>
+                <strong>関数・lambda</strong>
+                <small>map / filter / sorted</small>
+              </div>
+            </article>
+
+            <article>
+              <span>02</span>
+              <div>
+                <strong>例外・ファイル</strong>
+                <small>try / with / JSON</small>
+              </div>
+            </article>
+
+            <article>
+              <span>03</span>
+              <div>
+                <strong>オブジェクト指向</strong>
+                <small>継承 / 特殊メソッド</small>
+              </div>
+            </article>
+
+            <article>
+              <span>04</span>
+              <div>
+                <strong>テスト</strong>
+                <small>unittest / setUp</small>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <button id="resetDataButton" class="danger-text-button" type="button">
+          学習記録を初期化
+        </button>
+      </section>
+
+      <!-- クイズ画面 -->
+      <section id="quizView" class="view hidden">
+        <div class="quiz-topbar">
+          <button id="quitButton" class="back-button" type="button">
+            ← 終了
+          </button>
+
+          <div class="quiz-progress-copy">
+            <strong id="progressText">1 / 10</strong>
+            <span id="quizScoreText">正解 0</span>
+          </div>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+        <article id="questionCard" class="question-card">
+          <div class="question-meta">
+            <span id="questionCategory" class="category-badge">
+              関数
+            </span>
+
+            <span id="questionDifficulty" class="difficulty-badge">
+              基礎
+            </span>
+
+            <button
+              id="favoriteButton"
+              class="favorite-button"
+              type="button"
+              aria-label="お気に入りに追加"
+            >
+              ☆
+            </button>
+          </div>
+
+          <p id="questionNumber" class="question-number">
+            QUESTION 01
+          </p>
+
+          <h2 id="questionText" class="question-text"></h2>
+
+          <pre id="questionCode" class="code-block hidden"><code></code></pre>
+
+          <div
+            id="optionsContainer"
+            class="options-container"
+            role="radiogroup"
+            aria-label="選択肢"
+          ></div>
+
+          <div class="answer-actions">
+            <button
+              id="checkButton"
+              class="primary-button"
+              type="button"
+              disabled
+            >
+              回答を判定する
+            </button>
+
+            <button
+              id="showAnswerButton"
+              class="secondary-button"
+              type="button"
+            >
+              答えだけ見る
+            </button>
+          </div>
+
+          <section
+            id="explanationPanel"
+            class="explanation-panel hidden"
+            aria-live="polite"
+          >
+            <div id="resultHeading" class="result-heading">
+              <span id="resultIcon"></span>
+
+              <div>
+                <small id="resultLabel"></small>
+                <strong id="resultTitle"></strong>
+              </div>
+            </div>
+
+            <div class="correct-answer-box">
+              <span>正解</span>
+              <strong id="correctAnswerText"></strong>
+            </div>
+
+            <div class="explanation-copy">
+              <h3>解説</h3>
+              <p id="explanationText"></p>
+            </div>
+
+            <div id="memoryTipBox" class="memory-tip hidden">
+              <span>MEMORY TIP</span>
+              <p id="memoryTipText"></p>
+            </div>
+          </section>
+        </article>
+
+        <nav class="quiz-navigation" aria-label="問題移動">
+          <button id="previousButton" class="secondary-button" type="button">
+            ← 前の問題
+          </button>
+
+          <button id="nextButton" class="primary-button" type="button">
+            次の問題 →
+          </button>
+        </nav>
+      </section>
+
+      <!-- 結果画面 -->
+      <section id="resultView" class="view hidden">
+        <article class="result-card">
+          <div id="resultRing" class="result-ring">
+            <div>
+              <strong id="finalAccuracy">0%</strong>
+              <span>正答率</span>
+            </div>
+          </div>
+
+          <span class="eyebrow">SESSION COMPLETE</span>
+          <h1 id="finalTitle">学習完了！</h1>
+          <p id="finalMessage"></p>
+
+          <div class="result-summary-grid">
+            <article>
+              <span>正解</span>
+              <strong id="finalCorrect">0</strong>
+            </article>
+
+            <article>
+              <span>不正解</span>
+              <strong id="finalWrong">0</strong>
+            </article>
+
+            <article>
+              <span>答えを表示</span>
+              <strong id="finalRevealed">0</strong>
+            </article>
+          </div>
+
+          <div class="result-actions">
+            <button id="retryWrongButton" class="primary-button" type="button">
+              間違えた問題を復習
+            </button>
+
+            <button id="returnHomeButton" class="secondary-button" type="button">
+              ホームへ戻る
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>
+        『実践力を身につける Pythonの教科書 第2版』・授業板書をもとに構成
+      </p>
+    </footer>
+  </div>
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <form method="dialog">
+      <h2>学習記録を初期化しますか？</h2>
+      <p>
+        正答率、苦手問題、お気に入りなど、
+        この端末に保存された記録が削除されます。
+      </p>
+
+      <div class="dialog-actions">
+        <button value="cancel" class="secondary-button">
+          キャンセル
+        </button>
+
+        <button value="confirm" class="danger-button">
+          初期化する
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <noscript>
+    <p class="noscript-message">
+      このアプリを利用するにはJavaScriptを有効にしてください。
+    </p>
+  </noscript>
+</body>
+</html>
