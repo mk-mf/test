@@ -1,0 +1,1392 @@
+[
+  {
+    "id": "func-001",
+    "category": "関数・lambda",
+    "difficulty": "basic",
+    "question": "名前を持たない関数を、その場で簡潔に作成するための式はどれですか？",
+    "options": ["lambda式", "import文", "yield文", "class文"],
+    "answer": 0,
+    "explanation": "lambda式は、関数名をdef文で定義せずに関数オブジェクトを作るための式です。書式は「lambda 引数: 式」です。",
+    "memoryTip": "lambdaの後ろに引数、コロンの後ろに戻り値となる式を書く。"
+  },
+  {
+    "id": "func-002",
+    "category": "関数・lambda",
+    "difficulty": "basic",
+    "question": "次のlambda式と同じ働きをするdef関数はどれですか？",
+    "code": "x2 = lambda x: x * 2",
+    "options": [
+      "def x2(x): return x * 2",
+      "def x2(x): print(x)",
+      "def x2(): return x * 2",
+      "def x2(x): yield x"
+    ],
+    "answer": 0,
+    "explanation": "lambda x: x * 2は、引数xを受け取り、x * 2の結果を返します。lambda式ではreturnを書きません。",
+    "memoryTip": "lambda式ではコロンの後ろの式の評価結果が自動的に返る。"
+  },
+  {
+    "id": "func-003",
+    "category": "関数・lambda",
+    "difficulty": "standard",
+    "question": "lambda式の本体について正しい説明はどれですか？",
+    "options": [
+      "基本的に単一の式を記述する",
+      "必ず複数の文を記述する",
+      "return文を必ず書く",
+      "引数を指定できない"
+    ],
+    "answer": 0,
+    "explanation": "lambda式の本体には単一の式を記述します。文を複数並べる用途には通常のdef関数を使います。",
+    "memoryTip": "複雑な処理ならlambdaではなくdefを使う。"
+  },
+  {
+    "id": "func-004",
+    "category": "関数・lambda",
+    "difficulty": "standard",
+    "question": "map(function, iterable)の主な働きはどれですか？",
+    "options": [
+      "各要素にfunctionを適用する",
+      "条件を満たす要素だけを取り出す",
+      "要素を必ず降順に並べる",
+      "ファイルを読み込む"
+    ],
+    "answer": 0,
+    "explanation": "map()はイテラブルの各要素に指定した関数を適用し、その結果を順番に返すイテレータを生成します。",
+    "memoryTip": "mapは変換、filterは選別。"
+  },
+  {
+    "id": "func-005",
+    "category": "関数・lambda",
+    "difficulty": "standard",
+    "question": "filter(function, iterable)の主な働きはどれですか？",
+    "options": [
+      "条件を満たす要素を取り出す",
+      "すべての要素を同じ値にする",
+      "辞書をJSONに変換する",
+      "関数を定義する"
+    ],
+    "answer": 0,
+    "explanation": "filter()は、functionの戻り値が真となる要素だけをイテラブルから取り出します。",
+    "memoryTip": "filterはTrueになった要素を通すフィルター。"
+  },
+  {
+    "id": "func-006",
+    "category": "関数・lambda",
+    "difficulty": "standard",
+    "question": "次の処理結果はどれですか？",
+    "code": "list(map(lambda x: x * 2, [1, 2, 3]))",
+    "options": ["[2, 4, 6]", "[1, 2, 3]", "[2, 3, 4]", "[1, 4, 9]"],
+    "answer": 0,
+    "explanation": "map()が各要素にlambda x: x * 2を適用するため、1、2、3がそれぞれ2、4、6になります。"
+  },
+  {
+    "id": "func-007",
+    "category": "関数・lambda",
+    "difficulty": "standard",
+    "question": "次の処理結果はどれですか？",
+    "code": "list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4]))",
+    "options": ["[2, 4]", "[1, 3]", "[1, 2, 3, 4]", "[0, 0]"],
+    "answer": 0,
+    "explanation": "x % 2 == 0が真になるのは偶数の2と4です。そのためfilter()は2と4を取り出します。"
+  },
+  {
+    "id": "func-008",
+    "category": "関数・lambda",
+    "difficulty": "advanced",
+    "question": "動物名と速度のタプルを、速度で並べ替えるkey指定はどれですか？",
+    "code": "animals = [('ライオン', 58), ('チーター', 110)]",
+    "options": [
+      "key=lambda animal: animal[1]",
+      "key=lambda animal: animal[0]",
+      "key=lambda animal: len(animals)",
+      "key=animals[1]"
+    ],
+    "answer": 0,
+    "explanation": "各タプルの1番目の要素が速度です。sorted()のkeyには、比較に使う値を返す関数を指定します。",
+    "memoryTip": "添字は0から始まる。animal[1]が2番目の速度。"
+  },
+  {
+    "id": "iter-001",
+    "category": "イテレータ",
+    "difficulty": "basic",
+    "question": "イテレータとは何ですか？",
+    "options": [
+      "値を1つずつ順に取り出すためのオブジェクト",
+      "例外をすべて無視する仕組み",
+      "クラスを継承する仕組み",
+      "文字列だけを保存するファイル"
+    ],
+    "answer": 0,
+    "explanation": "イテレータは値を1つずつ順番に取り出すためのオブジェクトです。for文の内部でも利用されています。"
+  },
+  {
+    "id": "iter-002",
+    "category": "イテレータ",
+    "difficulty": "standard",
+    "question": "イテラブルからイテレータを取得する組み込み関数はどれですか？",
+    "options": ["iter()", "next()", "yield()", "range.next()"],
+    "answer": 0,
+    "explanation": "iter()はイテラブルからイテレータを取得します。値を1つ進めて取り出すときにはnext()を使います。",
+    "memoryTip": "iterで準備、nextで1つ取り出す。"
+  },
+  {
+    "id": "iter-003",
+    "category": "イテレータ",
+    "difficulty": "standard",
+    "question": "イテレータから次の値を取り出す関数はどれですか？",
+    "options": ["next()", "iter()", "open()", "filter()"],
+    "answer": 0,
+    "explanation": "next(iterator)を呼び出すと、イテレータの次の値が返されます。"
+  },
+  {
+    "id": "iter-004",
+    "category": "イテレータ",
+    "difficulty": "standard",
+    "question": "イテレータからすべての値を取り出した後、さらにnext()を呼ぶと通常何が発生しますか？",
+    "options": [
+      "StopIteration",
+      "ZeroDivisionError",
+      "SyntaxError",
+      "FileNotFoundError"
+    ],
+    "answer": 0,
+    "explanation": "取り出せる値がなくなるとStopIteration例外が送出されます。for文はこの終了を内部で処理します。"
+  },
+  {
+    "id": "iter-005",
+    "category": "イテレータ",
+    "difficulty": "standard",
+    "question": "ジェネレータ関数で値を1つずつ生成するために使用する文はどれですか？",
+    "options": ["yield", "returnだけ", "break", "import"],
+    "answer": 0,
+    "explanation": "関数内にyieldがあると、その関数はジェネレータ関数になります。yieldは値を返した位置で処理状態を一時停止し、次回そこから再開します。",
+    "memoryTip": "yieldは値を返して一時停止、next()で再開。"
+  },
+  {
+    "id": "iter-006",
+    "category": "イテレータ",
+    "difficulty": "advanced",
+    "question": "自作オブジェクトをイテレータとして扱うために中心となる特殊メソッドの組み合わせはどれですか？",
+    "options": [
+      "__iter__() と __next__()",
+      "__init__() と __str__()",
+      "__add__() と __mul__()",
+      "__get__() と __set__()"
+    ],
+    "answer": 0,
+    "explanation": "__iter__()はイテレータを返し、__next__()は次の要素を返します。終了時にはStopIterationを送出します。"
+  },
+  {
+    "id": "exception-001",
+    "category": "例外処理",
+    "difficulty": "basic",
+    "question": "予期される実行時エラーに対して、事前に対応を用意する仕組みを何といいますか？",
+    "options": ["例外処理", "内包表記", "継承", "静的型付け"],
+    "answer": 0,
+    "explanation": "例外処理は、ファイルが存在しない、入力形式が違うなど、実行中に起こり得る問題に対処する仕組みです。"
+  },
+  {
+    "id": "exception-002",
+    "category": "例外処理",
+    "difficulty": "basic",
+    "question": "0で割り算をしたときに発生する代表的な例外はどれですか？",
+    "options": [
+      "ZeroDivisionError",
+      "ValueError",
+      "NameError",
+      "IndexError"
+    ],
+    "answer": 0,
+    "explanation": "Pythonで数値を0で割るとZeroDivisionErrorが発生します。"
+  },
+  {
+    "id": "exception-003",
+    "category": "例外処理",
+    "difficulty": "standard",
+    "question": "try節で例外が発生しなかった場合に実行される節はどれですか？",
+    "options": ["else節", "except節", "raise節", "import節"],
+    "answer": 0,
+    "explanation": "try節が正常に完了した場合、else節が実行されます。例外が発生すると対応するexcept節が実行されます。"
+  },
+  {
+    "id": "exception-004",
+    "category": "例外処理",
+    "difficulty": "standard",
+    "question": "例外発生の有無にかかわらず、原則として最後に実行される節はどれですか？",
+    "options": ["finally節", "else節", "case節", "yield節"],
+    "answer": 0,
+    "explanation": "finally節は、例外が発生した場合も正常に終わった場合も実行されます。ファイルや接続の後処理に利用されます。",
+    "memoryTip": "finallyは成功でも失敗でも最後に実行。"
+  },
+  {
+    "id": "exception-005",
+    "category": "例外処理",
+    "difficulty": "standard",
+    "question": "意図的に例外を送出するために使用する文はどれですか？",
+    "options": ["raise", "yield", "return", "continue"],
+    "answer": 0,
+    "explanation": "raiseを使うと、指定した例外クラスまたは例外インスタンスを意図的に送出できます。"
+  },
+  {
+    "id": "exception-006",
+    "category": "例外処理",
+    "difficulty": "advanced",
+    "question": "複数の例外型を1つのexcept節で処理する正しい形式はどれですか？",
+    "options": [
+      "except (ValueError, TypeError):",
+      "except ValueError, TypeError:",
+      "except [ValueError, TypeError]:",
+      "except ValueError or TypeError:"
+    ],
+    "answer": 0,
+    "explanation": "複数の例外型をまとめて捕捉するときは、例外クラスをタプルとして丸括弧内に記述します。"
+  },
+  {
+    "id": "exception-007",
+    "category": "例外処理",
+    "difficulty": "advanced",
+    "question": "一般的な例外を広く捕捉する場合でも、裸のexceptよりexcept Exceptionが推奨される主な理由はどれですか？",
+    "options": [
+      "SystemExitやKeyboardInterruptなどまで不用意に捕捉しにくいから",
+      "SyntaxErrorを必ず修正できるから",
+      "処理速度が必ず2倍になるから",
+      "finallyが不要になるから"
+    ],
+    "answer": 0,
+    "explanation": "Exceptionは一般的な非致命的例外の基底クラスです。裸のexceptはSystemExitやKeyboardInterruptなども捕捉するため、終了操作を妨げる可能性があります。"
+  },
+  {
+    "id": "typing-001",
+    "category": "型ヒント",
+    "difficulty": "basic",
+    "question": "型ヒントの主な目的として適切なものはどれですか？",
+    "options": [
+      "変数・引数・戻り値の想定型を明確にする",
+      "Pythonを静的型付け言語に完全変更する",
+      "実行速度を必ず上げる",
+      "例外をすべて防止する"
+    ],
+    "answer": 0,
+    "explanation": "型ヒントはコードの意図を明確にし、可読性やIDEの補完、静的型チェックを支援します。"
+  },
+  {
+    "id": "typing-002",
+    "category": "型ヒント",
+    "difficulty": "standard",
+    "question": "Python本体は、通常、型ヒントに違反した値が渡されたときにどうしますか？",
+    "options": [
+      "型ヒントだけを理由に自動停止するとは限らない",
+      "必ずコンパイルエラーにする",
+      "値を必ず正しい型へ変換する",
+      "関数を自動削除する"
+    ],
+    "answer": 0,
+    "explanation": "型アノテーションは通常、実行時に強制されません。mypyなどの静的型チェッカーやIDEが検査に利用します。"
+  },
+  {
+    "id": "typing-003",
+    "category": "型ヒント",
+    "difficulty": "standard",
+    "question": "関数の戻り値がint型であることを示す正しい記述はどれですか？",
+    "options": [
+      "def calc() -> int:",
+      "def calc(): int",
+      "int def calc():",
+      "def calc(int):"
+    ],
+    "answer": 0,
+    "explanation": "戻り値の型ヒントは、引数リストの後ろに「-> 型名」と記述します。"
+  },
+  {
+    "id": "typing-004",
+    "category": "型ヒント",
+    "difficulty": "standard",
+    "question": "mypyを使ってsample.pyを検査する代表的なコマンドはどれですか？",
+    "options": [
+      "mypy sample.py",
+      "python sample.py mypy",
+      "pip sample.py",
+      "import mypy sample.py"
+    ],
+    "answer": 0,
+    "explanation": "mypyをインストールした後、「mypy 対象ファイル名.py」で静的型チェックを実行できます。"
+  },
+  {
+    "id": "module-001",
+    "category": "モジュール",
+    "difficulty": "basic",
+    "question": "Pythonにおけるモジュールの基本的な単位はどれですか？",
+    "options": [
+      "1つのPythonスクリプトファイル",
+      "1つの変数だけ",
+      "1つのコメントだけ",
+      "必ず10個のクラスを持つフォルダ"
+    ],
+    "answer": 0,
+    "explanation": "通常、1つの.pyファイルが1つのモジュールとして扱われます。"
+  },
+  {
+    "id": "module-002",
+    "category": "モジュール",
+    "difficulty": "basic",
+    "question": "モジュールを読み込むために使用する文はどれですか？",
+    "options": ["import文", "yield文", "raise文", "pass文"],
+    "answer": 0,
+    "explanation": "import モジュール名と記述すると、モジュールを読み込んで利用できます。"
+  },
+  {
+    "id": "module-003",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "import randomの後、randomモジュールのrandint()を呼び出す記述はどれですか？",
+    "options": [
+      "random.randint(1, 6)",
+      "randint.random(1, 6)",
+      "random->randint(1, 6)",
+      "import.randint(1, 6)"
+    ],
+    "answer": 0,
+    "explanation": "通常のimportでは「モジュール名.要素名」の形式で関数や変数へアクセスします。"
+  },
+  {
+    "id": "module-004",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "特定の要素だけをモジュールから取り込む正しい記述はどれですか？",
+    "options": [
+      "from math import pi",
+      "import pi from math",
+      "from pi import math",
+      "math from import pi"
+    ],
+    "answer": 0,
+    "explanation": "from モジュール名 import 要素名と記述すると、その要素をモジュール名なしで利用できます。"
+  },
+  {
+    "id": "module-005",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "モジュールや要素に別名を付けるために使用するキーワードはどれですか？",
+    "options": ["as", "is", "in", "with"],
+    "answer": 0,
+    "explanation": "import numpy as npのようにasを使用すると、モジュールや要素を別名で参照できます。"
+  },
+  {
+    "id": "module-006",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "関数オブジェクト自体を別の変数へ代入するとき、関数名の後ろの丸括弧はどうしますか？",
+    "options": [
+      "付けない",
+      "必ず付ける",
+      "二重に付ける",
+      "角括弧に変更する"
+    ],
+    "answer": 0,
+    "explanation": "関数名だけを記述すると関数オブジェクトを参照します。丸括弧を付けると関数を実行し、その戻り値を取得します。"
+  },
+  {
+    "id": "module-007",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "Pythonファイルのコンパイル済みバイトコードで一般的に使われる拡張子はどれですか？",
+    "options": [".pyc", ".pvc", ".class", ".json"],
+    "answer": 0,
+    "explanation": "Pythonのコンパイル済みバイトコードは通常.pycファイルとして__pycache__ディレクトリに保存されます。"
+  },
+  {
+    "id": "module-008",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "Pythonパッケージを公開・配布する代表的なインデックスはどれですか？",
+    "options": ["PyPI", "JVM", "JSON", "REPL"],
+    "answer": 0,
+    "explanation": "PyPIはPython Package Indexの略で、多数の第三者パッケージが公開されています。"
+  },
+  {
+    "id": "module-009",
+    "category": "モジュール",
+    "difficulty": "basic",
+    "question": "pipでqrcodeパッケージをインストールする代表的なコマンドはどれですか？",
+    "options": [
+      "pip install qrcode",
+      "pip import qrcode",
+      "python open qrcode",
+      "install.py qrcode"
+    ],
+    "answer": 0,
+    "explanation": "pip install パッケージ名でPyPIなどからパッケージをインストールできます。"
+  },
+  {
+    "id": "file-001",
+    "category": "ファイル・JSON",
+    "difficulty": "basic",
+    "question": "ファイル処理の基本的な流れとして正しいものはどれですか？",
+    "options": [
+      "開く → 読み書きする → 閉じる",
+      "閉じる → 開く → 削除する",
+      "読み込む → importする → 継承する",
+      "例外を送出する → 開く → 終了する"
+    ],
+    "answer": 0,
+    "explanation": "ファイルはopen()で開き、read()やwrite()で処理し、最後にclose()で閉じるのが基本です。"
+  },
+  {
+    "id": "file-002",
+    "category": "ファイル・JSON",
+    "difficulty": "basic",
+    "question": "open()の読み込み専用モードはどれですか？",
+    "options": ["r", "w", "a", "x+"],
+    "answer": 0,
+    "explanation": "rはreadを表す読み込みモードです。省略した場合も通常はrになります。"
+  },
+  {
+    "id": "file-003",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "open()のwモードについて正しい説明はどれですか？",
+    "options": [
+      "書き込み用で、既存内容を基本的に切り詰める",
+      "末尾への追記だけを行う",
+      "読み込みしかできない",
+      "必ずバイナリで開く"
+    ],
+    "answer": 0,
+    "explanation": "wは書き込みモードです。既存ファイルを開くと内容を切り詰め、ファイルがなければ新規作成します。"
+  },
+  {
+    "id": "file-004",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "ファイル末尾へ内容を追加するモードはどれですか？",
+    "options": ["a", "r", "w", "b"],
+    "answer": 0,
+    "explanation": "aはappendを表し、書き込み位置を基本的にファイル末尾にして追記します。"
+  },
+  {
+    "id": "file-005",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "with open(...) as f: を使う大きな利点はどれですか？",
+    "options": [
+      "処理終了時にファイルを適切に閉じやすい",
+      "すべての例外が消える",
+      "ファイルが必ずJSONになる",
+      "import文が不要になる"
+    ],
+    "answer": 0,
+    "explanation": "with文を抜けると、途中で例外が発生した場合もコンテキスト管理によってファイルが閉じられます。",
+    "memoryTip": "ファイル処理ではwith open(...)を優先して覚える。"
+  },
+  {
+    "id": "file-006",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "ファイル全体を文字列として読み込む代表的なメソッドはどれですか？",
+    "options": ["read()", "write()", "closed()", "append()"],
+    "answer": 0,
+    "explanation": "引数を省略したread()は、ファイルの残り全体を読み込んで文字列として返します。"
+  },
+  {
+    "id": "file-007",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "ファイルを1行ずつ処理する簡潔な方法はどれですか？",
+    "options": [
+      "ファイルオブジェクトをfor文で反復する",
+      "ファイルをクラスとして継承する",
+      "毎回importする",
+      "必ずJSONへ変換する"
+    ],
+    "answer": 0,
+    "explanation": "ファイルオブジェクトはイテラブルなので、「for line in file:」のように1行ずつ処理できます。"
+  },
+  {
+    "id": "json-001",
+    "category": "ファイル・JSON",
+    "difficulty": "basic",
+    "question": "JSONの主な用途として適切なものはどれですか？",
+    "options": [
+      "決まった形式のテキストでデータを交換する",
+      "Pythonコードを必ず高速化する",
+      "クラスを多重継承する",
+      "例外を無効にする"
+    ],
+    "answer": 0,
+    "explanation": "JSONは軽量なデータ交換形式です。Python以外の多数の言語やWeb APIでも利用されます。"
+  },
+  {
+    "id": "json-002",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "PythonオブジェクトをJSON文字列へ変換する関数はどれですか？",
+    "options": [
+      "json.dumps()",
+      "json.loads()",
+      "json.load()",
+      "json.open()"
+    ],
+    "answer": 0,
+    "explanation": "dumps()のsはstringを意識すると覚えやすく、PythonオブジェクトをJSON形式の文字列へ変換します。",
+    "memoryTip": "s付きのdumps/loadsは文字列を扱う。"
+  },
+  {
+    "id": "json-003",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "JSON文字列をPythonオブジェクトへ変換する関数はどれですか？",
+    "options": [
+      "json.loads()",
+      "json.dumps()",
+      "json.dump()",
+      "json.write()"
+    ],
+    "answer": 0,
+    "explanation": "json.loads()はJSON形式の文字列を解析し、辞書やリストなどのPythonオブジェクトへ変換します。"
+  },
+  {
+    "id": "json-004",
+    "category": "ファイル・JSON",
+    "difficulty": "standard",
+    "question": "PythonオブジェクトをJSONファイルへ書き込む関数はどれですか？",
+    "options": [
+      "json.dump()",
+      "json.dumps()",
+      "json.loads()",
+      "json.read()"
+    ],
+    "answer": 0,
+    "explanation": "json.dump(obj, file)は、PythonオブジェクトをJSON形式としてファイルへ書き込みます。"
+  },
+  {
+    "id": "json-005",
+    "category": "ファイル・JSON",
+    "difficulty": "advanced",
+    "question": "Pythonのタプルを標準のjsonモジュールでJSON化し、再び読み込むと一般的に何になりますか？",
+    "options": ["リスト", "タプルのまま", "集合", "クラス"],
+    "answer": 0,
+    "explanation": "JSONにはPythonのタプルに対応する独立した型がなく、JSON配列として保存されます。読み込むとPythonのリストになります。"
+  },
+  {
+    "id": "regex-001",
+    "category": "正規表現",
+    "difficulty": "basic",
+    "question": "Pythonで正規表現を利用するときに通常インポートする標準モジュールはどれですか？",
+    "options": ["re", "regexだけ", "math", "json"],
+    "answer": 0,
+    "explanation": "Pythonの標準的な正規表現機能はreモジュールで提供されています。"
+  },
+  {
+    "id": "regex-002",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現パターンでraw文字列記法が推奨される主な理由はどれですか？",
+    "options": [
+      "バックスラッシュを含むパターンを記述しやすいから",
+      "必ず検索速度が100倍になるから",
+      "数字しか書けなくなるから",
+      "importが不要になるから"
+    ],
+    "answer": 0,
+    "explanation": "正規表現とPython文字列の両方がバックスラッシュを特別扱いします。r\"\\d+\"のようなraw文字列を使うと記述しやすくなります。"
+  },
+  {
+    "id": "regex-003",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "re.search()とre.match()の違いとして適切なものはどれですか？",
+    "options": [
+      "searchは文字列内を探し、matchは先頭から照合する",
+      "matchだけが正規表現を使う",
+      "searchは必ずすべての一致を返す",
+      "両者に違いはない"
+    ],
+    "answer": 0,
+    "explanation": "re.search()は文字列内から一致箇所を探します。re.match()は文字列の先頭位置から一致するかを調べます。"
+  },
+  {
+    "id": "regex-004",
+    "category": "正規表現",
+    "difficulty": "basic",
+    "question": "正規表現で行頭・文字列先頭を表す代表的なメタ文字はどれですか？",
+    "options": ["^", "$", ".", "*"],
+    "answer": 0,
+    "explanation": "^は文字列の先頭に一致します。MULTILINEモードでは各行の先頭にも一致します。"
+  },
+  {
+    "id": "regex-005",
+    "category": "正規表現",
+    "difficulty": "basic",
+    "question": "正規表現で文字列末尾を表す代表的なメタ文字はどれですか？",
+    "options": ["$", "^", "+", "|"],
+    "answer": 0,
+    "explanation": "$は文字列の末尾、または末尾の改行直前などに一致します。"
+  },
+  {
+    "id": "regex-006",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現の「*」が表す繰り返し回数はどれですか？",
+    "options": ["0回以上", "1回以上", "ちょうど1回", "2回だけ"],
+    "answer": 0,
+    "explanation": "*は直前のパターンの0回以上の繰り返しを表します。+は1回以上、?は0回または1回です。"
+  },
+  {
+    "id": "regex-007",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現の「+」が表す繰り返し回数はどれですか？",
+    "options": ["1回以上", "0回以上", "0回または1回", "必ず10回"],
+    "answer": 0,
+    "explanation": "+は直前のパターンの1回以上の繰り返しを表します。"
+  },
+  {
+    "id": "regex-008",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現の「?」が単独の数量詞として表すものはどれですか？",
+    "options": ["0回または1回", "1回以上", "0回以上", "3回以上"],
+    "answer": 0,
+    "explanation": "?は直前のパターンが0回または1回現れることを表します。数量詞の後ろの?は非貪欲指定という別の役割を持ちます。"
+  },
+  {
+    "id": "regex-009",
+    "category": "正規表現",
+    "difficulty": "advanced",
+    "question": "正規表現で最短一致・非貪欲な繰り返しにする例はどれですか？",
+    "options": [".*?", ".*", ".+", ".{1,3}+"],
+    "answer": 0,
+    "explanation": "通常の*や+は可能な限り長く一致します。数量詞の後ろに?を付けると、可能な限り短く一致します。"
+  },
+  {
+    "id": "regex-010",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現の\\dが表すものとして最も適切なのはどれですか？",
+    "options": [
+      "10進数字",
+      "数字以外",
+      "空白",
+      "英字だけ"
+    ],
+    "answer": 0,
+    "explanation": "\\dは10進数字に一致します。Unicode文字列ではASCIIの0〜9以外のUnicode数字にも一致する場合があります。"
+  },
+  {
+    "id": "regex-011",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "正規表現の\\Sが表すものはどれですか？",
+    "options": [
+      "空白文字以外",
+      "空白文字",
+      "数字だけ",
+      "文字列の先頭"
+    ],
+    "answer": 0,
+    "explanation": "\\sは空白文字、\\Sは空白文字以外に一致します。大文字の短縮記法は反対の意味になるものが多いです。"
+  },
+  {
+    "id": "regex-012",
+    "category": "正規表現",
+    "difficulty": "standard",
+    "question": "re.findall()の戻り値として適切な説明はどれですか？",
+    "options": [
+      "一致した内容をまとめたリスト",
+      "必ず1つのMatchオブジェクト",
+      "ファイルオブジェクト",
+      "クラスオブジェクト"
+    ],
+    "answer": 0,
+    "explanation": "findall()は一致した文字列をリストとして返します。一致がなければ空のリストになります。"
+  },
+  {
+    "id": "regex-013",
+    "category": "正規表現",
+    "difficulty": "advanced",
+    "question": "同じ正規表現を何度も利用するときに便利な関数はどれですか？",
+    "options": [
+      "re.compile()",
+      "re.open()",
+      "re.dump()",
+      "re.next()"
+    ],
+    "answer": 0,
+    "explanation": "re.compile()は正規表現パターンをコンパイルし、繰り返し利用できるパターンオブジェクトを返します。"
+  },
+  {
+    "id": "comp-001",
+    "category": "内包表記",
+    "difficulty": "basic",
+    "question": "次のリスト内包表記の結果はどれですか？",
+    "code": "[x * 2 for x in range(1, 4)]",
+    "options": ["[2, 4, 6]", "[1, 2, 3]", "[2, 3, 4]", "[1, 4, 9]"],
+    "answer": 0,
+    "explanation": "range(1, 4)から1、2、3を取り出し、それぞれを2倍してリストに格納します。"
+  },
+  {
+    "id": "comp-002",
+    "category": "内包表記",
+    "difficulty": "standard",
+    "question": "1から10までの奇数だけを作る内包表記はどれですか？",
+    "options": [
+      "[x for x in range(1, 11) if x % 2 == 1]",
+      "[x if x % 2 == 1 for x in range(1, 11)]",
+      "[if x % 2 == 1 x for x in range(1, 11)]",
+      "[x for if x in range(1, 11)]"
+    ],
+    "answer": 0,
+    "explanation": "要素を選別するifは、内包表記のfor句の後ろに記述します。"
+  },
+  {
+    "id": "comp-003",
+    "category": "内包表記",
+    "difficulty": "standard",
+    "question": "丸括弧を使った「(x * 2 for x in data)」は何を生成しますか？",
+    "options": [
+      "ジェネレータ式",
+      "タプル内包表記",
+      "辞書内包表記",
+      "集合内包表記"
+    ],
+    "answer": 0,
+    "explanation": "丸括弧で書く内包表記風の構文はジェネレータ式です。Pythonにはタプル内包表記はありません。",
+    "memoryTip": "[]はリスト、{}は集合または辞書、()はジェネレータ式。"
+  },
+  {
+    "id": "comp-004",
+    "category": "内包表記",
+    "difficulty": "standard",
+    "question": "ジェネレータ式からタプルを作る方法として適切なものはどれですか？",
+    "options": [
+      "tuple(x ** 2 for x in range(3))",
+      "tuple[x ** 2 for x in range(3)]",
+      "yield tuple x",
+      "tuple = x ** 2"
+    ],
+    "answer": 0,
+    "explanation": "ジェネレータ式をtuple()へ渡すと、生成された値を要素とするタプルを作れます。"
+  },
+  {
+    "id": "comp-005",
+    "category": "内包表記",
+    "difficulty": "advanced",
+    "question": "Pythonの条件式（三項演算子）の正しい順序はどれですか？",
+    "options": [
+      "真の値 if 条件式 else 偽の値",
+      "条件式 ? 真の値 : 偽の値",
+      "if 条件式 then 真の値",
+      "条件式 else 真の値 if 偽の値"
+    ],
+    "answer": 0,
+    "explanation": "Pythonの条件式は「真の場合の値 if 条件式 else 偽の場合の値」の順番です。"
+  },
+  {
+    "id": "decorator-001",
+    "category": "デコレータ",
+    "difficulty": "basic",
+    "question": "デコレータの主な役割はどれですか？",
+    "options": [
+      "関数やクラスの振る舞いを包んで機能を追加する",
+      "ファイルを削除する",
+      "変数を必ず整数にする",
+      "正規表現を無効にする"
+    ],
+    "answer": 0,
+    "explanation": "デコレータは、元の関数などを別の関数で包み、実行前後の処理や共通機能を追加する仕組みです。"
+  },
+  {
+    "id": "decorator-002",
+    "category": "デコレータ",
+    "difficulty": "standard",
+    "question": "関数にデコレータを適用する代表的な記述はどれですか？",
+    "options": [
+      "@decorator_name",
+      "#decorator_name",
+      "import @decorator_name",
+      "decorator_name!"
+    ],
+    "answer": 0,
+    "explanation": "対象となる関数定義の直前に@デコレータ名を記述します。"
+  },
+  {
+    "id": "decorator-003",
+    "category": "デコレータ",
+    "difficulty": "advanced",
+    "question": "汎用的なデコレータのwrapperで、位置引数とキーワード引数をまとめて受け取る記述はどれですか？",
+    "options": [
+      "def wrapper(*args, **kwargs):",
+      "def wrapper(args only):",
+      "class wrapper(args):",
+      "lambda wrapper import args"
+    ],
+    "answer": 0,
+    "explanation": "*argsは任意個の位置引数、**kwargsは任意個のキーワード引数を受け取ります。元の関数へそのまま引き渡すと汎用的なデコレータを作れます。"
+  },
+  {
+    "id": "class-001",
+    "category": "クラス",
+    "difficulty": "basic",
+    "question": "クラスとインスタンスの関係として最も適切なものはどれですか？",
+    "options": [
+      "クラスは設計図、インスタンスはそれから生成された具体的なオブジェクト",
+      "クラスとインスタンスは必ず別の言語",
+      "インスタンスからクラスは作れないため無関係",
+      "クラスは例外だけを表す"
+    ],
+    "answer": 0,
+    "explanation": "クラスはオブジェクトの型や振る舞いを定義し、そのクラスを呼び出すことでインスタンスを生成します。"
+  },
+  {
+    "id": "class-002",
+    "category": "クラス",
+    "difficulty": "basic",
+    "question": "Pythonでクラスを定義するキーワードはどれですか？",
+    "options": ["class", "def", "object", "new"],
+    "answer": 0,
+    "explanation": "Pythonではclass クラス名: の形式でクラスを定義します。"
+  },
+  {
+    "id": "class-003",
+    "category": "クラス",
+    "difficulty": "standard",
+    "question": "インスタンスメソッドの第1引数として一般的に使われる名前はどれですか？",
+    "options": ["self", "this", "me", "instanceof"],
+    "answer": 0,
+    "explanation": "Pythonではインスタンス自身を受け取る第1引数をselfと書く慣習があります。self自体は予約語ではありません。",
+    "memoryTip": "PythonのselfはJavaのthisに近い役割。"
+  },
+  {
+    "id": "class-004",
+    "category": "クラス",
+    "difficulty": "standard",
+    "question": "クラスのインスタンス生成直後に、自動的に呼び出される初期化メソッドはどれですか？",
+    "options": [
+      "__init__()",
+      "__next__()",
+      "__getitem__()",
+      "__main__()"
+    ],
+    "answer": 0,
+    "explanation": "__init__()は新しく生成されたインスタンスを初期化する特殊メソッドです。インスタンス自体の生成は主に__new__()が担当します。"
+  },
+  {
+    "id": "class-005",
+    "category": "クラス",
+    "difficulty": "advanced",
+    "question": "インスタンスそのものを生成する役割に最も近い特殊メソッドはどれですか？",
+    "options": [
+      "__new__()",
+      "__init__()",
+      "__str__()",
+      "__iter__()"
+    ],
+    "answer": 0,
+    "explanation": "__new__()はクラスの新しいインスタンスを生成して返します。その後、通常は__init__()が初期化を行います。"
+  },
+  {
+    "id": "class-006",
+    "category": "クラス",
+    "difficulty": "standard",
+    "question": "クラス変数について正しい説明はどれですか？",
+    "options": [
+      "クラスの名前空間に属し、インスタンス間で共有され得る",
+      "必ずインスタンスごとに異なる",
+      "関数内でしか利用できない",
+      "JSONでしか利用できない"
+    ],
+    "answer": 0,
+    "explanation": "クラス本体に定義したクラス変数はクラスに属し、各インスタンスからも参照できます。変更可能オブジェクトを置くと共有に注意が必要です。"
+  },
+  {
+    "id": "class-007",
+    "category": "クラス",
+    "difficulty": "standard",
+    "question": "self.name = name のような代入で作られるnameは一般に何と呼ばれますか？",
+    "options": [
+      "インスタンス変数",
+      "ローカル関数",
+      "標準モジュール",
+      "抽象メソッド"
+    ],
+    "answer": 0,
+    "explanation": "self.nameは各インスタンスに属するデータ属性、つまりインスタンス変数として扱われます。"
+  },
+  {
+    "id": "inherit-001",
+    "category": "継承・多態性",
+    "difficulty": "basic",
+    "question": "継承の主な目的として適切なものはどれですか？",
+    "options": [
+      "基底クラスの性質や処理を派生クラスで再利用・拡張する",
+      "ファイルを圧縮する",
+      "例外をすべて無効にする",
+      "変数名を自動生成する"
+    ],
+    "answer": 0,
+    "explanation": "継承を使うと、基底クラスのメソッドやクラス属性などを派生クラスで利用し、追加や変更ができます。"
+  },
+  {
+    "id": "inherit-002",
+    "category": "継承・多態性",
+    "difficulty": "standard",
+    "question": "Animalクラスを継承してDogクラスを定義する正しい記述はどれですか？",
+    "options": [
+      "class Dog(Animal):",
+      "class Dog extends Animal:",
+      "class Dog import Animal:",
+      "class Dog -> Animal:"
+    ],
+    "answer": 0,
+    "explanation": "Pythonではclass 派生クラス名(基底クラス名): の形式で継承を記述します。"
+  },
+  {
+    "id": "inherit-003",
+    "category": "継承・多態性",
+    "difficulty": "standard",
+    "question": "派生クラスから基底クラスのメソッドを協調的に呼び出すときに使うものはどれですか？",
+    "options": ["super()", "parent()", "base()", "this()"],
+    "answer": 0,
+    "explanation": "super()はメソッド解決順序に従って次のクラスを参照するプロキシを返します。super().method()のように使います。"
+  },
+  {
+    "id": "inherit-004",
+    "category": "継承・多態性",
+    "difficulty": "standard",
+    "question": "派生クラスで基底クラスと同名のメソッドを定義することを何といいますか？",
+    "options": [
+      "オーバーライド",
+      "オーバーロードだけ",
+      "エンコード",
+      "マングリング"
+    ],
+    "answer": 0,
+    "explanation": "派生クラスで基底クラスのメソッドを置き換えるように同名メソッドを定義することをオーバーライドといいます。"
+  },
+  {
+    "id": "inherit-005",
+    "category": "継承・多態性",
+    "difficulty": "advanced",
+    "question": "Pythonで複数の基底クラスを継承する機能を何といいますか？",
+    "options": ["多重継承", "多重代入", "多重例外", "多重JSON"],
+    "answer": 0,
+    "explanation": "Pythonではclass C(A, B): のように複数の基底クラスを指定できます。メソッドの探索順序はMROによって決まります。"
+  },
+  {
+    "id": "inherit-006",
+    "category": "継承・多態性",
+    "difficulty": "advanced",
+    "question": "多重継承でメソッドを探す順序を表す用語はどれですか？",
+    "options": [
+      "MRO",
+      "JSON",
+      "REPL",
+      "ASCII"
+    ],
+    "answer": 0,
+    "explanation": "MROはMethod Resolution Orderの略で、多重継承を含むクラス階層でメソッドを探索する順序です。"
+  },
+  {
+    "id": "inherit-007",
+    "category": "継承・多態性",
+    "difficulty": "standard",
+    "question": "ダックタイピングの考え方として適切なものはどれですか？",
+    "options": [
+      "型名より、必要な操作やメソッドを持つかを重視する",
+      "すべてのクラスがDuckを継承しなければならない",
+      "変数には必ず型宣言が必要である",
+      "多重継承を禁止する"
+    ],
+    "answer": 0,
+    "explanation": "ダックタイピングでは、オブジェクトの具体的な型よりも、必要なメソッドや振る舞いを提供するかを重視します。"
+  },
+  {
+    "id": "private-001",
+    "category": "カプセル化",
+    "difficulty": "basic",
+    "question": "Pythonで名前の先頭に1つのアンダースコアを付ける慣習は何を示しますか？",
+    "options": [
+      "外部からの利用を控えてほしい内部用メンバ",
+      "完全にアクセス不可能なメンバ",
+      "必ず定数である",
+      "必ず静的メソッドである"
+    ],
+    "answer": 0,
+    "explanation": "_nameは非公開扱いにしたいという慣習上の意思表示です。言語機能として外部アクセスを完全に禁止するものではありません。"
+  },
+  {
+    "id": "private-002",
+    "category": "カプセル化",
+    "difficulty": "standard",
+    "question": "クラス内の__valueのような名前に適用される仕組みはどれですか？",
+    "options": [
+      "名前マングリング",
+      "JSONエンコード",
+      "例外チェーン",
+      "リスト内包表記"
+    ],
+    "answer": 0,
+    "explanation": "先頭に2つのアンダースコアを持つ名前は、_クラス名__valueのように変換されます。完全な秘密化ではありません。"
+  },
+  {
+    "id": "private-003",
+    "category": "カプセル化",
+    "difficulty": "standard",
+    "question": "インスタンスを作らずにクラスから呼び出せ、selfやclsを自動的に受け取らないメソッドを定義するデコレータはどれですか？",
+    "options": [
+      "@staticmethod",
+      "@property",
+      "@abstractmethod",
+      "@setter"
+    ],
+    "answer": 0,
+    "explanation": "@staticmethodを付けたメソッドは、クラスの名前空間に置かれますが、インスタンスやクラスを暗黙の第1引数として受け取りません。"
+  },
+  {
+    "id": "private-004",
+    "category": "カプセル化",
+    "difficulty": "standard",
+    "question": "メソッドとして実装しながら、外部から属性のように参照できる仕組みはどれですか？",
+    "options": [
+      "property",
+      "filter",
+      "yield",
+      "compile"
+    ],
+    "answer": 0,
+    "explanation": "propertyを使うと、外部からはobj.valueのように属性として扱いながら、内部ではゲッターメソッドを実行できます。"
+  },
+  {
+    "id": "private-005",
+    "category": "カプセル化",
+    "difficulty": "standard",
+    "question": "プロパティのゲッターを定義するときに使う代表的なデコレータはどれですか？",
+    "options": [
+      "@property",
+      "@staticmethod",
+      "@classmethod",
+      "@abstractmethodだけ"
+    ],
+    "answer": 0,
+    "explanation": "@propertyをメソッドに付けると、そのメソッドを属性参照によって呼び出せるようになります。"
+  },
+  {
+    "id": "private-006",
+    "category": "カプセル化",
+    "difficulty": "advanced",
+    "question": "hourプロパティのセッターを定義する記述はどれですか？",
+    "options": [
+      "@hour.setter",
+      "@property.setter.hour",
+      "@setter(hour)",
+      "@hour.set"
+    ],
+    "answer": 0,
+    "explanation": "@propertyでhourを定義した後、@hour.setterを付けた同名メソッドを定義します。"
+  },
+  {
+    "id": "special-001",
+    "category": "特殊メソッド",
+    "difficulty": "basic",
+    "question": "特殊メソッドの名前の特徴はどれですか？",
+    "options": [
+      "名前の前後に二重アンダースコアが付く",
+      "必ず大文字だけで書く",
+      "名前の先頭に@が付く",
+      "数字だけで書く"
+    ],
+    "answer": 0,
+    "explanation": "__init__や__str__のように、前後に2つずつアンダースコアを持つメソッドを特殊メソッドと呼びます。"
+  },
+  {
+    "id": "special-002",
+    "category": "特殊メソッド",
+    "difficulty": "standard",
+    "question": "自作クラスで+演算子の動作を定義する特殊メソッドはどれですか？",
+    "options": [
+      "__add__()",
+      "__plus__()",
+      "__sum__()",
+      "__append__()"
+    ],
+    "answer": 0,
+    "explanation": "__add__()を定義すると、そのクラスのオブジェクトに+演算子を適用したときの処理を実装できます。"
+  },
+  {
+    "id": "special-003",
+    "category": "特殊メソッド",
+    "difficulty": "standard",
+    "question": "print()などで利用される、人間向けの文字列表現を返す特殊メソッドはどれですか？",
+    "options": [
+      "__str__()",
+      "__next__()",
+      "__new__()",
+      "__setitem__()"
+    ],
+    "answer": 0,
+    "explanation": "__str__()はオブジェクトの読みやすい文字列表現を返します。JavaのtoString()に近い役割です。"
+  },
+  {
+    "id": "special-004",
+    "category": "特殊メソッド",
+    "difficulty": "standard",
+    "question": "obj[key]による値の取得を実現する特殊メソッドはどれですか？",
+    "options": [
+      "__getitem__()",
+      "__setitem__()",
+      "__get__()",
+      "__indexitem__()"
+    ],
+    "answer": 0,
+    "explanation": "obj[key]を評価すると、基本的にobj.__getitem__(key)が呼び出されます。"
+  },
+  {
+    "id": "special-005",
+    "category": "特殊メソッド",
+    "difficulty": "standard",
+    "question": "obj[key] = valueによる代入を実現する特殊メソッドはどれですか？",
+    "options": [
+      "__setitem__()",
+      "__getitem__()",
+      "__set__()だけ",
+      "__append__()"
+    ],
+    "answer": 0,
+    "explanation": "添字やキーを使った代入では__setitem__(key, value)が呼び出されます。"
+  },
+  {
+    "id": "special-006",
+    "category": "特殊メソッド",
+    "difficulty": "standard",
+    "question": "オブジェクトが指定した型またはその派生型か調べる関数はどれですか？",
+    "options": [
+      "isinstance()",
+      "typehint()",
+      "instanceof",
+      "issame()"
+    ],
+    "answer": 0,
+    "explanation": "isinstance(object, classinfo)は、オブジェクトが指定型またはその派生型のインスタンスかを判定します。"
+  },
+  {
+    "id": "abc-001",
+    "category": "抽象クラス",
+    "difficulty": "basic",
+    "question": "抽象基底クラスの主な目的はどれですか？",
+    "options": [
+      "派生クラスに特定のメソッド実装を要求する",
+      "ファイルを暗号化する",
+      "正規表現を生成する",
+      "変数をJSONへ変換する"
+    ],
+    "answer": 0,
+    "explanation": "抽象基底クラスを利用すると、派生クラスに必要なメソッドの実装を要求できます。具象メソッドを持つことも可能です。"
+  },
+  {
+    "id": "abc-002",
+    "category": "抽象クラス",
+    "difficulty": "standard",
+    "question": "抽象メソッドを示すデコレータはどれですか？",
+    "options": [
+      "@abstractmethod",
+      "@staticmethod",
+      "@property",
+      "@override"
+    ],
+    "answer": 0,
+    "explanation": "abcモジュールの@abstractmethodを使用します。ABCMetaを使うクラスで未実装の抽象メソッドがある場合、その派生クラスはインスタンス化できません。"
+  },
+  {
+    "id": "abc-003",
+    "category": "抽象クラス",
+    "difficulty": "standard",
+    "question": "抽象基底クラスを簡潔に定義するために継承できるabcモジュールのヘルパークラスはどれですか？",
+    "options": ["ABC", "JSON", "REPL", "MRO"],
+    "answer": 0,
+    "explanation": "from abc import ABC, abstractmethodとしてABCを継承すると、ABCMetaを直接指定せずに抽象基底クラスを定義できます。"
+  },
+  {
+    "id": "main-001",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "Pythonファイルがスクリプトとして直接実行された場合、__name__には通常何が入りますか？",
+    "options": [
+      "'__main__'",
+      "'__init__'",
+      "'main.py'",
+      "None"
+    ],
+    "answer": 0,
+    "explanation": "ファイルが直接実行されると__name__は'__main__'になります。モジュールとして読み込まれた場合は通常モジュール名になります。"
+  },
+  {
+    "id": "main-002",
+    "category": "モジュール",
+    "difficulty": "standard",
+    "question": "モジュールが直接実行された場合だけ処理を行う代表的な条件はどれですか？",
+    "options": [
+      "if __name__ == '__main__':",
+      "if __main__ == __name__():",
+      "if main import name:",
+      "if __name__ is module:"
+    ],
+    "answer": 0,
+    "explanation": "この条件を使うと、モジュールとしてimportされたときには動かさず、直接実行時だけテストコードなどを実行できます。"
+  },
+  {
+    "id": "test-001",
+    "category": "ユニットテスト",
+    "difficulty": "basic",
+    "question": "ユニットテストとは何ですか？",
+    "options": [
+      "比較的小さな単位が正しく動くか検証するテスト",
+      "画面全体の色だけを確認するテスト",
+      "必ず人間が手作業で行うテスト",
+      "ネットワーク速度だけを測るテスト"
+    ],
+    "answer": 0,
+    "explanation": "ユニットテストは関数やメソッドなど、プログラムを構成する比較的小さな単位の動作を検証します。"
+  },
+  {
+    "id": "test-002",
+    "category": "ユニットテスト",
+    "difficulty": "standard",
+    "question": "unittestでテストクラスが一般に継承するクラスはどれですか？",
+    "options": [
+      "unittest.TestCase",
+      "unittest.Test",
+      "unittest.Main",
+      "unittest.Assert"
+    ],
+    "answer": 0,
+    "explanation": "テストケースは通常、unittest.TestCaseを継承したクラスとして作成します。"
+  },
+  {
+    "id": "test-003",
+    "category": "ユニットテスト",
+    "difficulty": "standard",
+    "question": "2つの値が等しいことを検証する代表的なメソッドはどれですか？",
+    "options": [
+      "assertEqual(a, b)",
+      "assertSameOnly(a, b)",
+      "checkEqual(a, b)",
+      "equals(a, b)"
+    ],
+    "answer": 0,
+    "explanation": "TestCaseのassertEqual(a, b)は、aとbが等しいことを検証します。"
+  },
+  {
+    "id": "test-004",
+    "category": "ユニットテスト",
+    "difficulty": "standard",
+    "question": "各テストメソッドの直前に呼び出される準備用メソッドはどれですか？",
+    "options": [
+      "setUp()",
+      "setup_test()",
+      "before()",
+      "startUp()"
+    ],
+    "answer": 0,
+    "explanation": "setUp()は各テストメソッドの実行前に呼び出され、共通のオブジェクト生成や接続準備などに使われます。"
+  },
+  {
+    "id": "test-005",
+    "category": "ユニットテスト",
+    "difficulty": "standard",
+    "question": "各テストメソッドの後片付けに利用するメソッドはどれですか？",
+    "options": [
+      "tearDown()",
+      "setDown()",
+      "finish()",
+      "removeTest()"
+    ],
+    "answer": 0,
+    "explanation": "tearDown()はテスト実行後の後片付けに使います。setUp()が成功した場合、テスト結果にかかわらず実行されます。"
+  },
+  {
+    "id": "test-006",
+    "category": "ユニットテスト",
+    "difficulty": "standard",
+    "question": "test_sampleモジュールをunittestで実行する代表的なコマンドはどれですか？",
+    "options": [
+      "python -m unittest test_sample",
+      "python unittest import test_sample",
+      "mypy test_sample",
+      "pip test test_sample"
+    ],
+    "answer": 0,
+    "explanation": "python -m unittest モジュール名でテストを実行できます。モジュール名で指定する場合は通常.pyを付けません。"
+  },
+  {
+    "id": "test-007",
+    "category": "ユニットテスト",
+    "difficulty": "advanced",
+    "question": "unittestがテストメソッドとして自動検出する一般的な命名はどれですか？",
+    "options": [
+      "testで始まるメソッド名",
+      "checkで終わるメソッド名だけ",
+      "大文字だけのメソッド名",
+      "__init__というメソッドだけ"
+    ],
+    "answer": 0,
+    "explanation": "unittestのテストローダーは、通常testで始まるメソッドをテストメソッドとして検出します。"
+  },
+  {
+    "id": "datetime-001",
+    "category": "標準ライブラリ",
+    "difficulty": "basic",
+    "question": "現在の日付を持つdateオブジェクトを取得する代表的な呼び出しはどれですか？",
+    "options": [
+      "datetime.date.today()",
+      "datetime.today.date",
+      "date.now.time()",
+      "random.date()"
+    ],
+    "answer": 0,
+    "explanation": "datetimeモジュールをimportした場合、datetime.date.today()で現在の日付を表すdateオブジェクトを取得できます。"
+  },
+  {
+    "id": "datetime-002",
+    "category": "標準ライブラリ",
+    "difficulty": "standard",
+    "question": "日付と時刻を指定した形式の文字列へ変換するときに使う代表的なメソッドはどれですか？",
+    "options": [
+      "strftime()",
+      "strptime()だけ",
+      "formatdate()",
+      "dateprint()"
+    ],
+    "answer": 0,
+    "explanation": "strftime()はdateやdatetimeオブジェクトを指定書式の文字列へ変換します。strptime()は文字列の解析に使われます。"
+  },
+  {
+    "id": "datetime-003",
+    "category": "標準ライブラリ",
+    "difficulty": "standard",
+    "question": "2つの日時の差や経過時間を表すオブジェクトはどれですか？",
+    "options": [
+      "timedelta",
+      "timestampだけ",
+      "timezoneだけ",
+      "timeformat"
+    ],
+    "answer": 0,
+    "explanation": "timedeltaオブジェクトは時間差や期間を表します。dateやdatetime同士の引き算でも得られます。"
+  },
+  {
+    "id": "random-001",
+    "category": "標準ライブラリ",
+    "difficulty": "basic",
+    "question": "random.randint(a, b)が返す値の範囲として正しいものはどれですか？",
+    "options": [
+      "a以上b以下",
+      "a以上b未満",
+      "aより大きくbより小さい",
+      "必ずaだけ"
+    ],
+    "answer": 0,
+    "explanation": "random.randint(a, b)はa以上b以下の整数を返します。上限bも含まれます。",
+    "memoryTip": "randintは両端を含む。"
+  }
+]
